@@ -1,5 +1,12 @@
-const express =require('express') ;
+const express =require('express');
+const bodyPrser=require('body-parser');
+
+
+
 const app=express();
+app.use(bodyPrser.urlencoded({extended:false}));
+app.use(bodyPrser.json());
+
 app.get('/',(req,res)=>{
 
     app.use((req,res,next)=>{
@@ -14,4 +21,12 @@ app.get('/',(req,res)=>{
     res.send(user)
 
 });
-app.listen(3000)
+app.post('/profile',(req,res)=>{
+    console.log(req.body)
+    const user={
+        name:'abdelhadi',
+        password:'secret'
+    };
+    res.send('successfully done ')
+});
+app.listen(3000);
