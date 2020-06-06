@@ -1,11 +1,12 @@
-const http=require('http');
+const express =require('express') ;
+const app=express();
+app.get('/',(req,res)=>{
 
-const   server=http.createServer((request,response)=>{
     const user={
         name:'abdelhadi',
-        username:'asotjrs'
+        password:'secret'
     };
-    response.setHeader('Content-Type','application/json');
-    response.end(JSON.stringify(user));
+    res.send(user)
+
 });
-server.listen(3000);
+app.listen(3000)
